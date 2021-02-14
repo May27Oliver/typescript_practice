@@ -92,8 +92,124 @@ console.log(user);
 var emp;
 emp = [
     [10, 'Vane'],
-    [5, 'Oliver']
+    [5, 'Oliver'],
+    [12, 'Ocean']
 ];
 console.log(emp);
 emp.push([14, 'a']);
 //enum枚舉
+var arrDes = [1, 'sfsdg', true];
+console.log.apply(console, arrDes);
+var color;
+(function (color) {
+    color[color["red"] = 1] = "red";
+    color[color["green"] = 5] = "green";
+    color[color["blue"] = 6] = "blue";
+})(color || (color = {}));
+console.log(color.blue);
+var direction;
+(function (direction) {
+    direction["up"] = "up";
+    direction["down"] = "down";
+    direction["right"] = "right";
+    direction["left"] = "left";
+})(direction || (direction = {}));
+console.log(direction.left);
+//function類別
+console.log('function類型');
+function display() {
+    console.log('Hello World!');
+}
+display();
+function addFunc(num1, num2) {
+    return num1 + num2;
+}
+console.log(addFunc(1, 2));
+function showFunc() {
+    return "Hello World";
+}
+console.log(showFunc());
+//interface類型
+console.log('interface類型');
+function showInterface() {
+    // let kp1:keypair = {1,"value"} //wrong
+    var kp2 = { key: 1, value: 'Olie' };
+    var kp3 = { value: 'Dido', key: 10 };
+}
+var calculator = {
+    sumCal: function (first, second) {
+        return first + second;
+    }
+};
+console.log(calculator.sumCal(1, 2));
+//Generic泛型類型
+//泛型（Generics）是指在定義函式、介面或類別的時候，不預先指定具體的型別，而在使用的時候再指定型別的一種特性。
+//https://willh.gitbook.io/typescript-tutorial/advanced/generics
+//https://magiclen.org/typescript-generics/
+console.log('Generic類型');
+console.log('泛型（Generics）是指在定義函式、介面或類別的時候，不預先指定具體的型別，而在使用的時候再指定型別的一種特性。');
+function showGeneric(args) {
+    return args;
+}
+//<T>代表呼叫時自行填入資料型態。
+var op1 = showGeneric('Hello World');
+var op2 = showGeneric(123);
+console.log(op1);
+console.log(op2);
+//never類型，非常少用到
+console.log('never類型');
+//never類型是其他的意思，包含了undefined和null，意味其只能被never賦值。
+var tpNever;
+tpNever = undefined;
+var tpNever1;
+tpNever1 = null;
+var tpNever2;
+// tpNever2 = (()=>{
+//     throw new Error('錯誤訊息')
+// })();
+//函式定義
+function work() {
+    return 'work';
+}
+console.log(work());
+var work1 = function () {
+    return 123;
+};
+console.log(work1());
+//參數
+function getUser(name, age) {
+    if (name === void 0) { name = 'Vane'; }
+    if (age === void 0) { age = 12; }
+    return name + "\u5E74\u9F61\u662F" + age;
+}
+console.log(getUser('Vane', 12));
+var getInfo = function (name, age) {
+    return name + "\u5E74\u9F61\u662F" + age;
+};
+console.log(getInfo('Vane', 12));
+//剩餘參數
+function sum(a, b, c) {
+    var args = [];
+    for (var _i = 3; _i < arguments.length; _i++) {
+        args[_i - 3] = arguments[_i];
+    }
+    var total;
+    total = a + b + c;
+    args.forEach(function (item) {
+        total += item;
+    });
+    return total;
+}
+console.log(sum(1, 2, 3, 4, 5));
+//函式重載
+console.log('函式重載');
+function getMulUser(str) {
+    if (typeof str === 'string') {
+        return '我叫:' + str;
+    }
+    else {
+        return '我的年齡是：' + str;
+    }
+}
+console.log(getMulUser('Vane'));
+//class：

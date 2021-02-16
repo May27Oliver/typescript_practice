@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 console.log('Hello TypeScript');
 //typescript資料類型
 console.log('Number類型');
@@ -213,3 +226,42 @@ function getMulUser(str) {
 }
 console.log(getMulUser('Vane'));
 //class：
+var Person = /** @class */ (function () {
+    function Person(n) {
+        //實例化時自動產生
+        this.name = n;
+    }
+    Person.prototype.getName = function () {
+        return this.name;
+    };
+    Person.prototype.setName = function (name) {
+        this.name = name;
+    };
+    return Person;
+}());
+var p = new Person('Oliver');
+console.log(p.getName());
+p.setName('Oli');
+console.log(p.getName());
+//類的繼承操作
+var Student = /** @class */ (function (_super) {
+    __extends(Student, _super);
+    //extends實現的是類的繼承
+    function Student(name) {
+        return _super.call(this, name) || this; //初始化父類的建構函式。
+    }
+    Student.prototype.work = function () {
+        console.log(this.name + "\u6B63\u5728work");
+    };
+    Student.prototype.getName = function () {
+        return "\u6211\u7684\u540D\u5B57";
+    };
+    return Student;
+}(Person));
+var cs = new Student('OOl');
+console.log(cs.getName());
+//class 修飾符
+//public 公共 在當前類、子類、全域都可訪問。
+//protected 保護 在當前類、子類可以訪問、外部無法訪問。
+//private 私有 在當前類可以訪問，但在子類與外部無法訪問。
+//所以的屬性若不加修飾符則默認為public

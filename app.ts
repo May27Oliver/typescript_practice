@@ -284,4 +284,48 @@ function getMulUser(str:any):any {
 console.log(getMulUser('Vane'));
 
 //class：
+class Person{
+    name:string;//前面省略了Public
+    constructor(n:string) {
+        //實例化時自動產生
+        this.name = n;
+    }
 
+    getName():string {
+        return this.name;
+    }
+
+    setName(name:string):void{
+        this.name = name;
+    }
+}
+
+let p = new Person('Oliver');
+console.log(p.getName())
+p.setName('Oli');
+console.log(p.getName())
+
+//類的繼承操作
+class Student extends Person{
+    //extends實現的是類的繼承
+    constructor(name:string){
+       super(name) //初始化父類的建構函式。
+    }
+    work():void{
+        console.log(`${this.name}正在work`);
+    }
+
+    getName():string{//子類如果出現何父類一樣的方法名稱，子類會覆蓋父類名稱 
+        return `我的名字`
+    }
+}
+
+let cs = new Student('OOl');
+
+console.log(cs.getName());
+
+//class 修飾符
+//public 公共 在當前類、子類、全域都可訪問。
+//protected 保護 在當前類、子類可以訪問、外部無法訪問。
+//private 私有 在當前類可以訪問，但在子類與外部無法訪問。
+//所以的屬性若不加修飾符則默認為public

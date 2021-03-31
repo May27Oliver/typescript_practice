@@ -7,6 +7,8 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -88,6 +90,15 @@ function addAny(a, y) {
     console.log(z);
 }
 addAny('Su', ' Ch');
+//物件
+console.log('物件類型');
+//定義方式：
+var person = {
+    name: 'pjchender',
+    age: 32,
+};
+//物件還有一個比較特別的地方，就是有時物件中的屬性並非一定會存在，例如 person 這個物件，name 和 age 可能是必填，但職業（occupation）可以是選填，也就是可有可無，這時候可以在屬性名稱後方使用 ? 來表示，像是這樣：
+/* 在 occupation 後有一個 ?，表示該屬性不一定要存在於該物件中 */
 //array類型
 console.log('array類型');
 //定義方式：
@@ -265,3 +276,11 @@ console.log(cs.getName());
 //protected 保護 在當前類、子類可以訪問、外部無法訪問。
 //private 私有 在當前類可以訪問，但在子類與外部無法訪問。
 //所以的屬性若不加修飾符則默認為public
+//typescript型別註記
+/*
+Type Annotation 型別註解:
+https://medium.com/neptune-coding/typescript-type-annotation-%E5%9E%8B%E5%88%A5%E8%A8%BB%E8%A7%A3-c6605d216789
+
+ypeScript 判斷資料型別的機制 - 型別推論 x 斷言 x 註解
+https://ithelp.ithome.com.tw/articles/10217384
+*/ 

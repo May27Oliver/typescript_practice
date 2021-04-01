@@ -125,7 +125,7 @@ function getUser(name:string , age:number){
 function getUser(name:string):string;
 function getUser(age:number):number;
 
-function getUser(str:any):any{
+function getUser(str:any,age:number):any{
   if(typeof str === 'string'){
     return '我是：' + str;
   }else{
@@ -133,3 +133,38 @@ function getUser(str:any):any{
   }
 }
 
+//arrow function
+// let p = {
+//   data:{
+//     flag:true,
+//   },
+//   init:()=>{
+//     console.log(this);//箭頭函式沒有this，會指全域
+//   }
+// }
+
+//es5 class
+function classPerson(this:
+  {
+    name:string,
+    age:number,
+    work:()=>void,
+    // [propName:string]:any
+  }
+){
+  this.name = 'Vane';
+  this.age = 42;
+  this.work = function(){
+    console.log('work');
+  }
+}
+
+// classPerson.prototype.married = true;
+// classPerson.prototype.play = function(){
+//   console.log('play');
+// }
+
+//static靜態方法無法透過new的實例來調用
+
+var p = new classPerson();
+console.log(p.name);

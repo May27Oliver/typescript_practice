@@ -113,25 +113,25 @@ aceArr2 = [
 ]
 
 //函式多載
-function getUser(name:string , age:number){
-  if(arguments.length ===1){
-    return arguments[0]
-  }else{
-    return arguments[0] + arguments[1];
-  }
-}
+// function getUser(name:string , age:number){
+//   if(arguments.length ===1){
+//     return arguments[0]
+//   }else{
+//     return arguments[0] + arguments[1];
+//   }
+// }
 
 //typescript多載
-function getUser(name:string):string;
-function getUser(age:number):number;
+// function getUser(name:string):string;
+// function getUser(age:number):number;
 
-function getUser(str:any,age:number):any{
-  if(typeof str === 'string'){
-    return '我是：' + str;
-  }else{
-    return '我年齡：'+ age;
-  }
-}
+// function getUser(str:any):any{
+//   if(typeof str === 'string'){
+//     return '我是：' + str;
+//   }else{
+//     return '我年齡：'+ str;
+//   }
+// }
 
 //arrow function
 // let p = {
@@ -144,27 +144,43 @@ function getUser(str:any,age:number):any{
 // }
 
 //es5 class
-function classPerson(this:
-  {
-    name:string,
-    age:number,
-    work:()=>void,
-    // [propName:string]:any
-  }
-){
-  this.name = 'Vane';
-  this.age = 42;
-  this.work = function(){
-    console.log('work');
+type callSignature = {
+  new(classPerson:string):boolean
+}
+// function classPerson(
+//   this:
+//   {
+//     name:string,
+//     age:number,
+//     work:()=>void,
+//     // [propName:string]:any
+//   }
+// ){
+//   this.name = 'Vane';
+//   this.age = 42;
+//   this.work = function(){
+//     console.log('work');
+//   }
+// }
+class classPerson {
+  name:string;
+  age:number;
+  work:()=>void;
+  [propName:string]:any;
+
+  constructor(){
+    this.name = "Vane";
+    this.age = 42;
+    this.work = function(){
+      console.log('work');
+    }
   }
 }
-
-// classPerson.prototype.married = true;
-// classPerson.prototype.play = function(){
-//   console.log('play');
-// }
-
 //static靜態方法無法透過new的實例來調用
+classPerson.prototype.married = true;
+classPerson.prototype.play = function(){
+  console.log('play');
+}
 
-var p = new classPerson();
+var aPerson = new classPerson();
 console.log(p.name);
